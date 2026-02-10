@@ -51,13 +51,29 @@ if (fs.existsSync(assetsDir)) {
   if (!fs.existsSync(destAssetsDir)) {
     fs.mkdirSync(destAssetsDir, { recursive: true });
   }
-  const assetFiles = fs.readdirSync(assetsDir);
-  assetFiles.forEach(file => {
-    const srcPath = path.join(assetsDir, file);
-    const destPath = path.join(destAssetsDir, file);
-    fs.copyFileSync(srcPath, destPath);
-    console.log(`✓ Copied assets/${file}`);
-  });
+
+  // Recursively copy assets
+  function copyRecursive(src, dest) {
+    const items = fs.readdirSync(src);
+    items.forEach(item => {
+      const srcPath = path.join(src, item);
+      const destPath = path.join(dest, item);
+      const stat = fs.statSync(srcPath);
+
+      if (stat.isDirectory()) {
+        if (!fs.existsSync(destPath)) {
+          fs.mkdirSync(destPath, { recursive: true });
+        }
+        copyRecursive(srcPath, destPath);
+      } else if (stat.isFile()) {
+        fs.copyFileSync(srcPath, destPath);
+        const relativePath = path.relative(path.join(__dirname, 'src'), srcPath);
+        console.log(`✓ Copied ${relativePath}`);
+      }
+    });
+  }
+
+  copyRecursive(assetsDir, destAssetsDir);
 }
 
 console.log('\n✅ Build completed successfully!');
