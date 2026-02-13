@@ -76,5 +76,37 @@ if (fs.existsSync(assetsDir)) {
   copyRecursive(assetsDir, destAssetsDir);
 }
 
+// Copy vendor directory (integralthemes)
+const vendorDir = path.join(__dirname, 'vendor');
+if (fs.existsSync(vendorDir)) {
+  const destVendorDir = path.join(distDir, 'vendor');
+  if (!fs.existsSync(destVendorDir)) {
+    fs.mkdirSync(destVendorDir, { recursive: true });
+  }
+
+  // Recursively copy vendor
+  function copyRecursive(src, dest) {
+    const items = fs.readdirSync(src);
+    items.forEach(item => {
+      const srcPath = path.join(src, item);
+      const destPath = path.join(dest, item);
+      const stat = fs.statSync(srcPath);
+
+      if (stat.isDirectory()) {
+        if (!fs.existsSync(destPath)) {
+          fs.mkdirSync(destPath, { recursive: true });
+        }
+        copyRecursive(srcPath, destPath);
+      } else if (stat.isFile()) {
+        fs.copyFileSync(srcPath, destPath);
+        const relativePath = path.relative(__dirname, srcPath);
+        console.log(`✓ Copied ${relativePath}`);
+      }
+    });
+  }
+
+  copyRecursive(vendorDir, destVendorDir);
+}
+
 console.log('\n✅ Build completed successfully!');
 console.log(`📦 Output directory: ${distDir}`);
