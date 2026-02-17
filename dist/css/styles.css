@@ -12,7 +12,7 @@
    ============================================ */
 
 .timeline {
-  max-width: 900px;
+  max-width: 650px;
   margin: 0 auto;
   position: relative;
   padding: var(--spacing-lg) 0;
@@ -117,7 +117,7 @@
    ============================================ */
 
 .outcomes-block {
-  max-width: 900px;
+  max-width: 650px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -132,11 +132,13 @@
 
 .outcomes-block ul {
   text-align: left;
-  width: fit-content;
+  width: 100%;
   margin: 0;
 }
 
 .outcomes-block ul li {
+  font-size: 1.125rem;
+  font-weight: 500;
   line-height: 1.8;
   display: list-item;
   list-style-position: outside;
