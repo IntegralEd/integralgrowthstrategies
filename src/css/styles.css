@@ -265,12 +265,4 @@
   border-color: var(--primary);
 }
 
-/* Remove bullets from outcomes-grid */
-.outcomes-grid .service-list {
-  list-style: none;
-}
-
-.outcomes-grid .service-list li::before {
-  content: none;
-  display: none;
 }
