@@ -108,7 +108,7 @@
   }
   
   .timeline-item:not(:last-child) .timeline-marker::after {
-    height: 120px;
+    height: 180px;
   }
 }
 
