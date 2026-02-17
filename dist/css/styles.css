@@ -303,6 +303,7 @@
 }
 
 /* ============================================
+/* ============================================
    PHOTO BACKGROUND SECTION
    ============================================ */
 
@@ -317,11 +318,12 @@
 
 .photo-background-section .container {
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
 }
 
 .photo-background-section .content {
   max-width: 600px;
-  padding-right: var(--spacing-xl);
   text-align: left;
 }
 
@@ -336,12 +338,24 @@
 }
 
 @media (max-width: 768px) {
-  .photo-background-section {
-    background-position: top right;
-  }
-  
   .photo-background-section .content {
     max-width: 100%;
-    padding-right: var(--spacing-md);
   }
+}
+
+   HERO ADJUSTMENTS
+   ============================================ */
+
+/* Style hero H2 as H3 */
+.hero h2 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+/* Reduce hero subtitle size */
+.hero-subtitle {
+  font-size: 1rem !important;
 }
