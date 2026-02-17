@@ -55,7 +55,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
-  height: 100px;
+  height: 140px;
   background: #600b68;
   z-index: 1;
 }
@@ -209,7 +209,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100px;
+  min-height: 140px;
 }
 
 /* First row: 3 items spanning 2 columns each */
