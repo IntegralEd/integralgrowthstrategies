@@ -55,7 +55,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
-  height: calc(var(--spacing-xl) + var(--spacing-lg));
+  height: 100px;
   background: #600b68;
   z-index: 1;
 }
@@ -108,7 +108,7 @@
   }
   
   .timeline-item:not(:last-child) .timeline-marker::after {
-    height: calc(var(--spacing-lg) + var(--spacing-md));
+    height: 120px;
   }
 }
 
