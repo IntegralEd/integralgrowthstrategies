@@ -266,3 +266,27 @@
 }
 
 }
+
+/* Override service-list bullets with checkmarks in outcomes-grid */
+.outcomes-grid .service-list li {
+  padding: 0;
+  padding-left: 0;
+}
+
+.outcomes-grid .service-list li::before {
+  content: '✓';
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #600b68;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  flex-shrink: 0;
+  position: static;
+  left: auto;
+}
