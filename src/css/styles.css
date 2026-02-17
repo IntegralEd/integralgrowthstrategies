@@ -200,7 +200,7 @@
   background: var(--bg-primary);
   border: 2px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg);
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.6;
@@ -325,6 +325,7 @@
 .photo-background-section .content {
   max-width: 600px;
   text-align: left;
+  padding-left: 0;
 }
 
 .photo-background-section h2,
