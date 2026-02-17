@@ -206,6 +206,7 @@
   line-height: 1.6;
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100px;
@@ -244,6 +245,22 @@
 }
 
 .outcomes-grid ul li:hover {
+
+.outcomes-grid ul li::before {
+  content: '✓';
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #600b68;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  flex-shrink: 0;
+}
   box-shadow: var(--shadow-md);
   border-color: var(--primary);
 }
