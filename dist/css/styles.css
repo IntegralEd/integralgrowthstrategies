@@ -111,3 +111,21 @@
     height: calc(var(--spacing-lg) + var(--spacing-md));
   }
 }
+
+/* ============================================
+   OUTCOMES BLOCK (for short list items)
+   ============================================ */
+
+.outcomes-block {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.outcomes-block h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.outcomes-block ul {
+  text-align: left;
+}
