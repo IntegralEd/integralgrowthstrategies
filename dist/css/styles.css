@@ -129,3 +129,13 @@
 .outcomes-block ul {
   text-align: left;
 }
+
+.outcomes-block ul li {
+  line-height: 1.8;
+  display: list-item;
+  list-style-position: outside;
+}
+
+.outcomes-block ul li::marker {
+  line-height: 1;
+}
