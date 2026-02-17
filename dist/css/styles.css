@@ -173,6 +173,63 @@
 }
 
 /* ============================================
+   OUTCOMES FULL (full-width with checkmarks)
+   ============================================ */
+
+.outcomes-full {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.outcomes-full h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.outcomes-full ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.outcomes-full ul li {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+  display: block;
+  text-align: center;
+}
+
+.outcomes-full ul li::before {
+  content: '✓';
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #600b68;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 auto var(--spacing-sm) auto;
+}
+
+/* Override service-list defaults for outcomes-full */
+.outcomes-full .service-list li {
+  padding: 0;
+  padding-left: 0;
+}
+
+.outcomes-full .service-list li::before {
+  position: static;
+  left: auto;
+}
+
+/* ============================================
    OUTCOMES GRID (brick masonry layout)
    ============================================ */
 
