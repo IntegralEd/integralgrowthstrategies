@@ -362,6 +362,6 @@
 
 /* Increase outcomes-grid card padding */
 .outcomes-grid ul li {
-  padding: var(--spacing-lg) !important;
+  padding: var(--spacing-md) !important;
   gap: var(--spacing-sm);
 }
