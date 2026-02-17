@@ -296,7 +296,7 @@
    ============================================ */
 
 .trust-strip {
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   line-height: 1.4;
 }
 
