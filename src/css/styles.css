@@ -197,9 +197,9 @@
 }
 
 .outcomes-grid ul li {
-  background: #f5f5f5;
-  border: 2px solid #600b68;
-  border-radius: 12px;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
   padding: var(--spacing-md);
   font-size: 1rem;
   font-weight: 500;
@@ -241,4 +241,19 @@
   .outcomes-grid ul li {
     grid-column: 1 !important;
   }
+}
+
+.outcomes-grid ul li:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+/* Remove bullets from outcomes-grid */
+.outcomes-grid .service-list {
+  list-style: none;
+}
+
+.outcomes-grid .service-list li::before {
+  content: none;
+  display: none;
 }
