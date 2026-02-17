@@ -304,6 +304,7 @@
 
 /* ============================================
 /* ============================================
+/* ============================================
    PHOTO BACKGROUND SECTION
    ============================================ */
 
@@ -316,16 +317,14 @@
   position: relative;
 }
 
+/* Don't override container - let it use default padding */
 .photo-background-section .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
 }
 
 .photo-background-section .content {
   max-width: 600px;
-  text-align: left;
-  padding-left: 0;
 }
 
 .photo-background-section h2,
@@ -359,4 +358,10 @@
 /* Reduce hero subtitle size */
 .hero-subtitle {
   font-size: 1rem !important;
+}
+
+/* Increase outcomes-grid card padding */
+.outcomes-grid ul li {
+  padding: var(--spacing-lg) !important;
+  gap: var(--spacing-sm);
 }
