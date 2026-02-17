@@ -76,29 +76,3 @@ setTimeout(() => {
     })();
 }, 10000);
 
-// Timeline scroll animation
-function animateTimeline() {
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, {
-        threshold: 0.5,
-        rootMargin: '-50px'
-    });
-    
-    timelineItems.forEach(item => {
-        observer.observe(item);
-    });
-}
-
-// Initialize timeline animation when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', animateTimeline);
-} else {
-    animateTimeline();
-}

@@ -47,7 +47,7 @@
   z-index: 2;
 }
 
-/* Connecting line container */
+/* Static connecting line */
 .timeline-item:not(:last-child) .timeline-marker::after {
   content: '';
   position: absolute;
@@ -56,26 +56,8 @@
   transform: translateX(-50%);
   width: 4px;
   height: calc(var(--spacing-xl) + var(--spacing-lg));
-  background: #E8E0E8;
-  z-index: 1;
-}
-
-/* Animated line that grows on scroll */
-.timeline-item:not(:last-child) .timeline-marker::before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 0;
   background: #600b68;
-  z-index: 2;
-  transition: height 0.6s ease;
-}
-
-.timeline-item.active:not(:last-child) .timeline-marker::before {
-  height: calc(var(--spacing-xl) + var(--spacing-lg));
+  z-index: 1;
 }
 
 .timeline-content {
@@ -125,12 +107,7 @@
     display: none;
   }
   
-  .timeline-item:not(:last-child) .timeline-marker::after,
-  .timeline-item:not(:last-child) .timeline-marker::before {
-    height: calc(var(--spacing-lg) + var(--spacing-md));
-  }
-  
-  .timeline-item.active:not(:last-child) .timeline-marker::before {
+  .timeline-item:not(:last-child) .timeline-marker::after {
     height: calc(var(--spacing-lg) + var(--spacing-md));
   }
 }
