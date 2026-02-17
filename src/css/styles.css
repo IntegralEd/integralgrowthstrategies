@@ -160,3 +160,14 @@
   text-align: center;
   margin: 0 auto var(--spacing-sm) auto;
 }
+
+/* Override service-list defaults for outcomes-block */
+.outcomes-block .service-list li {
+  padding: 0;
+  padding-left: 0;
+}
+
+.outcomes-block .service-list li::before {
+  position: static;
+  left: auto;
+}
