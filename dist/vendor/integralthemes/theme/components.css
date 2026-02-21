@@ -590,15 +590,15 @@
   z-index: 2;
 }
 
-/* Connecting line between timeline markers */
-.timeline-item:not(:last-child) .timeline-marker::after {
+/* Dynamic connector line — stretches from bottom of circle to top of next */
+.timeline-item:not(:last-child)::after {
   content: '';
   position: absolute;
-  top: 100%;
-  left: 50%;
+  top: 80px;
+  left: 40px;
   transform: translateX(-50%);
   width: 4px;
-  height: calc(var(--spacing-xl) + var(--spacing-lg));
+  bottom: calc(-1 * var(--spacing-xl));
   background: var(--primary);
   z-index: 1;
 }
@@ -732,26 +732,6 @@
   /* FAQ Mobile */
   .faq-item {
     padding: var(--spacing-sm);
-  }
-
-  /* Timeline Mobile */
-  .timeline-item {
-    grid-template-columns: 60px 1fr;
-    gap: var(--spacing-md);
-  }
-
-  .timeline-marker {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-  }
-
-  .timeline-icon-wrapper {
-    display: none;
-  }
-
-  .timeline-item:not(:last-child) .timeline-marker::after {
-    height: calc(var(--spacing-lg) + var(--spacing-md));
   }
 }
 
