@@ -1,20 +1,36 @@
 const fs = require('fs');
 const path = require('path');
 
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
+const siteSlug = pkg.siteSlug || 'unknown';
+
 // Create dist directory
 const distDir = path.join(__dirname, 'dist');
 if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
 
-// Copy HTML files
+// Load analytics snippet for head injection
+const analyticsPath = path.join(__dirname, 'vendor', 'integralthemes', 'components', 'analytics.html');
+let analyticsHtml = '';
+if (fs.existsSync(analyticsPath)) {
+  analyticsHtml = fs.readFileSync(analyticsPath, 'utf8');
+  console.log(`✓ Loaded analytics snippet for injection`);
+}
+
+// Copy HTML files and inject analytics
 const htmlFiles = ['index.html'];
 htmlFiles.forEach(file => {
   const srcPath = path.join(__dirname, 'src', file);
   const destPath = path.join(distDir, file);
   if (fs.existsSync(srcPath)) {
-    fs.copyFileSync(srcPath, destPath);
-    console.log(`✓ Copied ${file}`);
+    let htmlContent = fs.readFileSync(srcPath, 'utf8');
+    if (analyticsHtml) {
+      const siteNameScript = `<script>window.IE_SITE_NAME = '${siteSlug}';</script>`;
+      htmlContent = htmlContent.replace('</head>', `${siteNameScript}\n${analyticsHtml}\n</head>`);
+    }
+    fs.writeFileSync(destPath, htmlContent, 'utf8');
+    console.log(`✓ Copied ${file}${analyticsHtml ? ' (analytics)' : ''}`);
   }
 });
 
