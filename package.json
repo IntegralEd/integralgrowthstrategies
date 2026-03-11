@@ -1,8 +1,8 @@
 {
-  "name": "integralplatforms",
+  "name": "integralgrowthstrategies",
   "version": "1.0.0",
-  "description": "IntegralEd Platform - Modern educational platform",
-  "siteSlug": "integralgrowthstrategies",
+  "description": "Integral Ed — Growth strategy microsite for edugrowthstrategy.com",
+  "siteSlug": "edugrowthstrategy",
   "scripts": {
     "build": "node build.js",
     "dev": "python3 -m http.server 8000",
