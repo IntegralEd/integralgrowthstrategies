@@ -247,7 +247,7 @@
 
 .trust-ticker {
   position: relative;
-  height: 3rem;
+  height: 6rem;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -257,14 +257,19 @@
   position: absolute;
   width: 100%;
   text-align: center;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
-  transform: translateX(105%);
+  transform: translateX(105%) translateZ(0);
   opacity: 0;
   animation: ticker-slide 20s ease-in-out infinite;
   will-change: transform, opacity;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  backface-visibility: hidden;
 }
 
 .ticker-item:nth-child(1) { animation-delay: 0s; }
@@ -273,17 +278,21 @@
 .ticker-item:nth-child(4) { animation-delay: 15s; }
 
 @keyframes ticker-slide {
-  0%      { transform: translateX(105%); opacity: 0; }
-  3%      { transform: translateX(0);    opacity: 1; }
-  22%     { transform: translateX(0);    opacity: 1; }
-  25%     { transform: translateX(-105%); opacity: 0; }
-  25.01%  { transform: translateX(105%); opacity: 0; }
-  100%    { transform: translateX(105%); opacity: 0; }
+  0%      { transform: translateX(105%) translateZ(0);   opacity: 0; }
+  3%      { transform: translateX(0)    translateZ(0);   opacity: 1; }
+  22%     { transform: translateX(0)    translateZ(0);   opacity: 1; }
+  25%     { transform: translateX(-105%) translateZ(0);  opacity: 0; }
+  25.01%  { transform: translateX(105%) translateZ(0);   opacity: 0; }
+  100%    { transform: translateX(105%) translateZ(0);   opacity: 0; }
 }
 
 @media (max-width: 768px) {
   .trust-ticker {
-    height: 4.5rem;
+    height: 7rem;
+  }
+
+  .ticker-item {
+    font-size: 1.35rem;
   }
 }
 
