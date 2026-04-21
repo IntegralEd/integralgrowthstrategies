@@ -18,7 +18,24 @@ if (fs.existsSync(analyticsPath)) {
   console.log(`✓ Loaded analytics snippet for injection`);
 }
 
-// Copy HTML files and inject analytics
+// Build footer HTML from shared template + site-specific config
+const footerTemplatePath = path.join(__dirname, 'vendor', 'integralthemes', 'components', 'footer.html');
+let footerHtml = '';
+if (fs.existsSync(footerTemplatePath) && pkg.footer) {
+  const footerTemplate = fs.readFileSync(footerTemplatePath, 'utf8');
+  const siteName = pkg.footer.siteName || '';
+  const pageLinksHtml = (pkg.footer.pageLinks || [])
+    .map(({ href, label }) => `          <li><a href="${href}">${label}</a></li>`)
+    .join('\n');
+  footerHtml = footerTemplate
+    .replace(/\{\{FOOTER_SITE_NAME\}\}/g, siteName)
+    .replace(/\{\{FOOTER_PAGE_LINKS\}\}/g, pageLinksHtml);
+  console.log('✓ Built footer from shared template');
+} else {
+  console.log('⚠ Footer template or config not found, pages will be built without injected footer');
+}
+
+// Copy HTML files and inject analytics + footer
 const htmlFiles = ['index.html'];
 htmlFiles.forEach(file => {
   const srcPath = path.join(__dirname, 'src', file);
@@ -29,8 +46,12 @@ htmlFiles.forEach(file => {
       const siteNameScript = `<script>window.IE_SITE_NAME = '${siteSlug}';</script>`;
       htmlContent = htmlContent.replace('</head>', `${siteNameScript}\n${analyticsHtml}\n</head>`);
     }
+    if (footerHtml) {
+      htmlContent = htmlContent.replace('<!-- FOOTER_INJECT -->', footerHtml);
+    }
     fs.writeFileSync(destPath, htmlContent, 'utf8');
-    console.log(`✓ Copied ${file}${analyticsHtml ? ' (analytics)' : ''}`);
+    const tags = [analyticsHtml ? 'analytics' : '', footerHtml ? 'footer' : ''].filter(Boolean);
+    console.log(`✓ Copied ${file}${tags.length ? ` (${tags.join(', ')})` : ''}`);
   }
 });
 

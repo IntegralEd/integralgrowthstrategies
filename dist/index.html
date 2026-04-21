@@ -14,12 +14,151 @@
 
   <!-- Site Overrides -->
   <link rel="stylesheet" href="css/styles.css">
+
+  <script>window.IE_SITE_NAME = 'growth-strategy';</script>
+  <!-- GA4: Integral Ed unified property -->
+<script id="ga4-gtag-loader" async src="https://www.googletagmanager.com/gtag/js?id=G-ZYXGKC3ZQ5"></script>
+<script id="ga4-gtag-init">
+(function() {
+  // Guard against double-injection (e.g. dev hot-reload, script included twice)
+  if (window.__IE_GA4_INITIALIZED__) return;
+  window.__IE_GA4_INITIALIZED__ = true;
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+
+  // site_name: set by build.js via window.IE_SITE_NAME, else hostname
+  var siteName = (window.IE_SITE_NAME && String(window.IE_SITE_NAME).trim())
+    || window.location.hostname;
+
+  // Cross-domain domains — GA4 linker appends _gl to outbound links pointing here
+  // and reads _gl on arrival, preserving session/user/UTM across domain hops.
+  // Add new domains to this list when a microsite goes live on a custom domain.
+  var IE_DOMAINS = [
+    'integral-ed.com',              'www.integral-ed.com',
+    'integral-ed.studio',           'www.integral-ed.studio',
+    'edugrowthstrategy.com',        'www.edugrowthstrategy.com',
+    'integralcareerpathways.com',   'www.integralcareerpathways.com',
+    'integralcapacity.com',         'www.integralcapacity.com',
+    'integralplatforms.com',        'www.integralplatforms.com',
+    'integralelearning.com',        'www.integralelearning.com',
+    'integralmediadesign.com',      'www.integralmediadesign.com',
+    'mathbalance.com',              'www.mathbalance.com'
+  ];
+
+  gtag('js', new Date());
+  gtag('config', 'G-ZYXGKC3ZQ5', {
+    send_page_view: true,
+    site_name: siteName,
+    linker: { domains: IE_DOMAINS }
+  });
+
+  // SPA / History API navigation support
+  function sendPageView() {
+    try {
+      gtag('event', 'page_view', {
+        page_title:    document.title,
+        page_location: window.location.href,
+        page_path:     window.location.pathname + window.location.search,
+        site_name:     siteName
+      });
+    } catch(e) { /* fail silently */ }
+  }
+
+  var _pushState = history.pushState;
+  history.pushState = function() {
+    _pushState.apply(history, arguments);
+    sendPageView();
+  };
+  window.addEventListener('popstate', sendPageView);
+})();
+</script>
+<script>window.IE_SITE_NAME = 'edugrowthstrategy';</script>
+<!--
+  Integral Ed — GA4 Analytics (G-ZYXGKC3ZQ5)
+
+  Injected into every microsite's <head> at build time by build.js.
+  Before this block, build.js injects:
+    <script>window.IE_SITE_NAME = 'site-slug';</script>
+
+  Features:
+  - Double-injection guard (window.__IE_GA4_INITIALIZED__)
+  - site_name sent with every event (hostname fallback if IE_SITE_NAME not set)
+  - SPA / History API support: fires page_view on pushState + popstate
+  - Cross-domain linker: appends/reads _gl on links between Integral Ed domains
+    so session, user ID, and UTM attribution persist across domain hops
+  - Fails silently on any error
+
+  Cross-domain domains list: update linker.domains below if a new domain goes live.
+  To override site_name per-page (rare): set window.IE_SITE_NAME before </head>.
+-->
+
+<!-- GA4: Integral Ed unified property -->
+<script id="ga4-gtag-loader" async src="https://www.googletagmanager.com/gtag/js?id=G-ZYXGKC3ZQ5"></script>
+<script id="ga4-gtag-init">
+(function() {
+  // Guard against double-injection (e.g. dev hot-reload, script included twice)
+  if (window.__IE_GA4_INITIALIZED__) return;
+  window.__IE_GA4_INITIALIZED__ = true;
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  window.gtag = window.gtag || gtag;
+
+  // site_name: set by build.js via window.IE_SITE_NAME, else hostname
+  var siteName = (window.IE_SITE_NAME && String(window.IE_SITE_NAME).trim())
+    || window.location.hostname;
+
+  // Cross-domain domains — GA4 linker appends _gl to outbound links pointing here
+  // and reads _gl on arrival, preserving session/user/UTM across domain hops.
+  // Add new domains to this list when a microsite goes live on a custom domain.
+  var IE_DOMAINS = [
+    'integral-ed.com',              'www.integral-ed.com',
+    'integral-ed.studio',           'www.integral-ed.studio',
+    'edugrowthstrategy.com',        'www.edugrowthstrategy.com',
+    'integralcareerpathways.com',   'www.integralcareerpathways.com',
+    'integralcapacity.com',         'www.integralcapacity.com',
+    'integralplatforms.com',        'www.integralplatforms.com',
+    'integralelearning.com',        'www.integralelearning.com',
+    'integralmediadesign.com',      'www.integralmediadesign.com',
+    'mathbalance.com',              'www.mathbalance.com'
+  ];
+
+  gtag('js', new Date());
+  gtag('config', 'G-ZYXGKC3ZQ5', {
+    send_page_view: true,
+    site_name: siteName,
+    linker: { domains: IE_DOMAINS }
+  });
+
+  // SPA / History API navigation support
+  function sendPageView() {
+    try {
+      gtag('event', 'page_view', {
+        page_title:    document.title,
+        page_location: window.location.href,
+        page_path:     window.location.pathname + window.location.search,
+        site_name:     siteName
+      });
+    } catch(e) { /* fail silently */ }
+  }
+
+  var _pushState = history.pushState;
+  history.pushState = function() {
+    _pushState.apply(history, arguments);
+    sendPageView();
+  };
+  window.addEventListener('popstate', sendPageView);
+})();
+</script>
+
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="#home" class="nav-logo">Integral Ed</a>
+      <a href="#home" class="nav-logo">Education Growth Strategy</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
         <span></span>
         <span></span>
@@ -27,7 +166,7 @@
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#services" class="nav-link">What We Offer</a></li>
         <li><a href="#how-we-work" class="nav-link">How We Work</a></li>
         <li><a href="#outcomes" class="nav-link">Outcomes</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -45,22 +184,22 @@
           We partner with K-12 nonprofits, curriculum publishers, and workforce organizations to design integrated marketing and growth strategies. Our work connects audience development, district sales, RFP strategy, grant funding, and reporting into a coherent system that drives measurable revenue and contract wins.
         </p>
         <div class="hero-buttons">
-          <a href="https://www.integral-ed.com/contact" class="btn btn-primary">Book a strategy call</a>
+          <a href="https://www.integral-ed.com/contact/" class="btn btn-primary">Book a strategy call</a>
           <a href="#how-we-work" class="btn btn-secondary">See how we support growth</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Trust Strip -->
+  <!-- Trust Ticker -->
   <section class="section section-compact section-alt">
     <div class="container">
-        <div class="trust-strip">
-            <span style="font-weight: 500;">Built for organizations selling to districts, schools, and individual learners</span>
-            <span style="font-weight: 500;">Direct-to-consumer enrollment and subscription growth</span>
-            <span style="font-weight: 500;">District and institutional adoption, pilots, renewals</span>
-            <span style="font-weight: 500;">Campaigns, collateral, KPI tracking, reporting</span>
-        </div>
+      <div class="trust-ticker" aria-live="off">
+        <div class="ticker-item">Built for organizations selling to districts, schools, and individual learners</div>
+        <div class="ticker-item">Direct-to-consumer enrollment and subscription growth</div>
+        <div class="ticker-item">District and institutional adoption, pilots, renewals</div>
+        <div class="ticker-item">Campaigns, collateral, KPI tracking, reporting</div>
+      </div>
     </div>
   </section>
 
@@ -304,7 +443,7 @@
               <h2>Ready to grow your audience and convert leads into contracts?</h2>
               <p class="cta-text">If you sell to districts, schools, or individual learners, we can help you build a growth system that is measurable and maintainable.</p>
               <div class="hero-buttons">
-                  <a href="https://www.integral-ed.com/contact" class="btn btn-primary">Book a strategy call</a>
+                  <a href="https://www.integral-ed.com/contact/" class="btn btn-primary">Book a strategy call</a>
                   <a href="mailto:info@integral-ed.com" class="btn btn-secondary">Contact us</a>
               </div>
           </div>
@@ -343,12 +482,70 @@
       </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <p class="footer-text">Education Growth Strategy is a division of <a href="https://www.integral-ed.com/" target="_blank" rel="noopener noreferrer">Integral Ed Services, LLC</a>.</p>
+  <!-- Footer (injected from vendor/integralthemes/components/footer.html at build time) -->
+  <!--
+  Shared footer template — Integral Ed microsite network
+  ======================================================
+
+  Build tokens replaced by each site's build.js at compile time:
+    Growth Strategy   → pkg.footer.siteName   (e.g. "eLearning &amp; Blended Learning")
+              <li><a href="#home">Home</a></li>
+          <li><a href="#services">What We Offer</a></li>
+          <li><a href="#how-we-work">How We Work</a></li>
+          <li><a href="#outcomes">Outcomes</a></li>
+          <li><a href="#contact">Contact</a></li>  → <li> elements built from pkg.footer.pageLinks array
+
+  Everything else (tagline body, Service Areas, Get in Touch, copyright)
+  is shared across all sites and lives here as the single source of truth.
+-->
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- ── Brand: injected per site ── -->
+      <div class="footer-brand">
+        <p class="footer-logo">Growth Strategy</p>
+        <p class="footer-tagline">Growth Strategy is a division of <a href="https://www.integral-ed.com/" class="footer-parent-link" target="_blank" rel="noopener noreferrer">Integral Ed Services</a>, an educator-led learning and media design firm for mission-driven organizations. Adding technical and strategic capacity to schools, nonprofits, and workforce organizations since 2011.</p>
+      </div>
+
+      <!-- ── Pages: injected per site ── -->
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3 class="footer-nav-heading">Pages</h3>
+        <ul role="list">
+                    <li><a href="#home">Home</a></li>
+          <li><a href="#services">What We Offer</a></li>
+          <li><a href="#how-we-work">How We Work</a></li>
+          <li><a href="#outcomes">Outcomes</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- ── Service Areas: identical across all sites — do not change ── -->
+      <nav class="footer-nav" aria-label="Service area microsites">
+        <h3 class="footer-nav-heading">Service Areas</h3>
+        <ul role="list">
+          <li><a href="https://www.integralelearning.com/" target="_blank" rel="noopener noreferrer">eLearning &amp; Blended Learning</a></li>
+          <li><a href="https://www.integralplatforms.com/" target="_blank" rel="noopener noreferrer">Platforms &amp; LMS</a></li>
+          <li><a href="https://www.integralcapacity.com/" target="_blank" rel="noopener noreferrer">Technical Assistance</a></li>
+          <li><a href="https://www.integralcareerpathways.com/" target="_blank" rel="noopener noreferrer">Career Connected Learning</a></li>
+          <li><a href="https://edugrowthstrategy.com/" target="_blank" rel="noopener noreferrer">Growth Strategy</a></li>
+          <li><a href="https://www.integralmediadesign.com/" target="_blank" rel="noopener noreferrer">Media &amp; Communications</a></li>
+        </ul>
+      </nav>
+
+      <!-- ── CTA: identical across all sites — do not change ── -->
+      <div class="footer-contact">
+        <h3 class="footer-nav-heading">Get in Touch</h3>
+        <a href="https://www.integral-ed.com/contact/" class="btn btn-primary footer-contact-btn" target="_blank" rel="noopener noreferrer">Talk With Our Team</a>
+      </div>
+
     </div>
-  </footer>
+    <p class="footer-copy">&copy; <span id="footer-year"></span> Integral Ed Services. All rights reserved.</p>
+  </div>
+</footer>
+<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+
 
   <script src="js/main.js"></script>
 </body>

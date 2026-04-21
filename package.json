@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "description": "Integral Ed — Growth strategy microsite for edugrowthstrategy.com",
   "siteSlug": "edugrowthstrategy",
+  "footer": {
+    "siteName": "Growth Strategy",
+    "pageLinks": [
+      { "href": "#home",        "label": "Home" },
+      { "href": "#services",    "label": "What We Offer" },
+      { "href": "#how-we-work", "label": "How We Work" },
+      { "href": "#outcomes",    "label": "Outcomes" },
+      { "href": "#contact",     "label": "Contact" }
+    ]
+  },
   "scripts": {
     "build": "node build.js",
     "dev": "python3 -m http.server 8000",
